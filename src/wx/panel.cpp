@@ -1083,9 +1083,9 @@ void GameArea::OnIdle(wxIdleEvent& event)
 
     if (!paused) {
         HidePointer();
-#ifndef __WXMSW__
+#ifndef TIMER_LOOP
         event.RequestMore();
-#endif // __WXMSW__
+#endif // TIMER_LOOP
 
 #ifndef NO_DEBUGGER
         if (debugger) {
@@ -1377,9 +1377,9 @@ void GameArea::OnSDLJoy(wxSDLJoyEvent& ev)
 }
 
 BEGIN_EVENT_TABLE(GameArea, wxPanel)
-#ifndef __WXMSW__
+#ifndef TIMER_LOOP
 EVT_IDLE(GameArea::OnIdle)
-#endif // __WXMSW__
+#endif // TIMER_LOOP
 EVT_SDLJOY(GameArea::OnSDLJoy)
 // FIXME: wxGTK does not generate motion events in MainFrame (not sure
 // what to do about it)
